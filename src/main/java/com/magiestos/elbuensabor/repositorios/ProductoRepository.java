@@ -1,9 +1,8 @@
 package com.magiestos.elbuensabor.repositorios;
 
 import com.magiestos.elbuensabor.entidades.Producto;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductoRepository extends JpaRepository <Producto,Long> {
+public interface ProductoRepository extends BaseRepository<Producto,Long> {
 }
