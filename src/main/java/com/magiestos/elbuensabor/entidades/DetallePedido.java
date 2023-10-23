@@ -15,8 +15,8 @@ public class DetallePedido extends BaseEntidad {
     private int cantidad;
     private double subtotal;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_producto")
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "id_articulo_producto")
     private Producto producto;
 
 }

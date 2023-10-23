@@ -17,16 +17,20 @@ import java.util.List;
 public class Domicilio extends BaseEntidad{
 
     private String calle;
-    private int numero;
+    private int numeroCalle;
     private String localidad;
+    private int codPostal;
+    private int pisoDepto;
+    private int nroDepto;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fk_cliente")
-    private Cliente cliente;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_persona")
+    private Persona persona;
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_domicilio")
-    @Builder.Default
-    private List<Pedido> pedidos = new ArrayList<>();
+    private Domicilio domicilio;
+
 
 }

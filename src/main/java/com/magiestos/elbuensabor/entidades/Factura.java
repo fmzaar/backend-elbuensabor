@@ -1,12 +1,16 @@
 package com.magiestos.elbuensabor.entidades;
 
-import jakarta.persistence.Entity;
+import com.magiestos.elbuensabor.enums.EstadoFactura;
+import com.magiestos.elbuensabor.enums.FormaPago;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,11 +19,24 @@ import java.util.Date;
 @AllArgsConstructor
 public class Factura extends BaseEntidad{
 
-    private long fecha; //Deberia ser DATE, cambiar
-    private int numero;
-    private double descuento;
-    private String formaPago; //CHEQUEAR SI NO ES CLASE NUEVA
-    private double total;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecha; //Deberia ser DATE, cambiar
+    @Enumerated(EnumType.STRING)
+    private EstadoFactura estadoFactura;
+    @Enumerated(EnumType.STRING)
+    private FormaPago formaPago;
+    private float total;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetalleFactura> detalleFacturaList = new ArrayList<>();
 
+    public void setFecha(Date fecha){
+        this.fecha = fecha;
+    }
+    public void setTotal(float total){
+        this.total= total;
+    }
+    public void addDetalleFactura(DetalleFactura detalleFactura){
+        this.detalleFacturaList.add(detalleFactura);
+    }
 }

@@ -1,6 +1,7 @@
 package com.magiestos.elbuensabor.entidades;
 
-import jakarta.persistence.Entity;
+import com.magiestos.elbuensabor.enums.TipoProducto;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,15 +13,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Producto extends BaseEntidad{
-    private String tipo;
-    private int tiempoEstimadoCocina;
+
+    @Enumerated(EnumType.STRING)
+    private TipoProducto tipoProducto;
+    @Column(nullable = false)
     private String denominacion;
+    @Column(length = 1000)
+    private String descripcion;
     private double precioVenta;
     private double precioCompra;
     private int stockActual;
     private int stockMinimo;
-    private String unidadMedida;
-    private String foto;
-    private String receta;
+    @Column(length = 300)
+    private String urlFoto;
+    private int TiempoEstimadoCocina;
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    private Rubro rubro;
+
 
 }
