@@ -29,7 +29,8 @@ public class Producto extends BaseEntidad{
     private int TiempoEstimadoCocina;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
-    private Rubro rubro;
+    @JoinColumn(name = "fk_rubro_producto")
+    private RubroProducto rubroProducto;
 
 
 }
