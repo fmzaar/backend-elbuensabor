@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -27,6 +29,12 @@ public class Producto extends BaseEntidad{
     @Column(length = 300)
     private String urlFoto;
     private int TiempoEstimadoCocina;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAlta;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaModificacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_rubro_producto")

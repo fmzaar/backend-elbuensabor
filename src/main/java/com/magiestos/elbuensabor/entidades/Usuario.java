@@ -2,23 +2,31 @@ package com.magiestos.elbuensabor.entidades;
 
 import com.magiestos.elbuensabor.enums.Rol;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "usuario")
 @Builder
 public class Usuario extends BaseEntidad{
 
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String email;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAlta;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaModificacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
 
     @OneToOne
     @JoinColumn(name="fk_domicilio")

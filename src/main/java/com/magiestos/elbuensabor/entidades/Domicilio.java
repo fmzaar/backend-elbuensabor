@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,12 @@ public class Domicilio extends BaseEntidad{
     private int codPostal;
     private int pisoDepto;
     private int nroDepto;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAlta;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaModificacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
 
 
     @ManyToOne(cascade = CascadeType.REFRESH)

@@ -33,6 +33,12 @@ public class Pedido extends BaseEntidad{
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     private Double total;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAlta;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaModificacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
 
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)

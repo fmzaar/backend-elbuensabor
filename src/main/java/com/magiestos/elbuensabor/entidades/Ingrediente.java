@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.engine.internal.Cascade;
 
+import java.util.Date;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +25,12 @@ public class Ingrediente extends BaseEntidad{
     private String urlFoto;
     @Enumerated(EnumType.STRING)
     private UnidadMedida unidadMedida;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAlta;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaModificacion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
 
 
     @ManyToOne(cascade = CascadeType.REFRESH)
